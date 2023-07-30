@@ -1,0 +1,26 @@
+@use './fonts.scss' as *;
+// breakpoints - mobile: 320px
+$desktop-breakpoint: 1280px;
+$tablet-breakpoint: 768px;
+
+
+// font colours
+$brainFlix-Black: #323232;
+$brainFlix-Blue: #0095FF;
+$silver: #AFAFAF;
+$white: #FFFFFF;
+
+$brainFlix-DarkBlack: #000000;
+$brainFlix-DarkBlue: #0065AD;
+$mercury : #E1E1E1;
+$alabaster: #FAFAFA;
+
+// font
+$font-regular: "Avenir Next Regular";
+$font-bold: 'Avenir Next Bold';
+
+// padding and margin
+$mobile-padding: 1rem;
+$desktop-side-padding: 7rem;
+$tablet-side-padding: 2.25rem;
+$desktop-tablet-padding: 1.5rem;

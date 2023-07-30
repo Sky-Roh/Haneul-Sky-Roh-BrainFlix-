@@ -1,0 +1,73 @@
+@use './variables.scss' as *;
+@use './fonts.scss' as *;
+//mixin camelCase
+
+// breakpoint
+@mixin desktop {
+    @media screen and (min-width: $desktop-breakpoint) {
+        @content;
+    }
+}
+
+@mixin tablet {
+    @media screen and (min-width: $tablet-breakpoint) {
+        @content;
+    }
+}
+
+// textStyle for different style from the given
+@mixin textStyleKit($fontSize, $lineHeight, $font) {
+    font-family: $font;
+    font-size: $fontSize;
+    line-height: $lineHeight;
+}
+
+// Desktop And Tablet Font
+@mixin pageHeader {
+    @include textStyleKit(2.0625rem, 2.75rem, $font-bold);
+}
+
+@mixin sectionHeader {
+    @include textStyleKit(0.75rem, 1.25rem, $font-bold)
+}
+
+@mixin subheader {
+    @include textStyleKit(0.875rem, 1.375rem, $font-bold)
+}
+
+@mixin bodyCopy {
+    @include textStyleKit(0.875rem, 1.375rem, $font-regular)
+}
+
+@mixin labelAndButton {
+    @include textStyleKit(0.75rem, 1.25rem, $font-bold)
+}
+
+// Mobile Font
+@mixin mobilePageHeader {
+    @include textStyleKit(1.5rem, 2rem, $font-bold);
+}
+
+@mixin mobileSectionHeader {
+    @include textStyleKit(0.75rem, 1.25rem, $font-bold)
+}
+
+@mixin mobileSubheader {
+    @include textStyleKit(0.8125rem, 1.125rem, $font-bold)
+}
+
+@mixin mobileBodyCopy {
+    @include textStyleKit(0.8125rem, 1.125rem, $font-regular)
+}
+
+@mixin mobileLabelAndButton {
+    @include textStyleKit(0.625rem, 1.25rem, $font-bold)
+}
+
+// Flex-box
+@mixin flex ($flex-direction, $align-items, $justify-content) {
+    display: flex;
+    flex-direction: $flex-direction;
+    align-items: $align-items;
+    justify-content: $justify-content;
+}
