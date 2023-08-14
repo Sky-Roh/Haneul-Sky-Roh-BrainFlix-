@@ -16,7 +16,7 @@ const Video = ({
                     <div className="next-video__image">
                         <img className="next-video--image"
                             src={image}
-                            alt="will be change"/>
+                            alt={title}/>
                     </div>
                     <div className="next-video__text">
                         <h2 className="next-video__subtitle">

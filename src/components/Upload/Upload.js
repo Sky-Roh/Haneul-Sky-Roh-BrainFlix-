@@ -1,26 +1,66 @@
 import "./Upload.scss"
 import {Link, useNavigate} from 'react-router-dom'
+import { useRef, useState, useEffect } from "react";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg"
+import axios from "axios";
 
 // reference : https://dev.to/deboragaleano/how-to-handle-multiple-inputs-in-react-55el#the-solution-refactoring
 const Upload = () => {
+    const formRef = useRef();
+
     const navigate = useNavigate();
+    const [videos, setVideos] = useState(null);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    useEffect(() => {
+        axios
+        .get("http://localhost:8080/videos")
+        .then((res) => {
+            const videoData = res.data;
+            setVideos(videoData);
+        })
 
-        const formEl = event.target;
-        const title = formEl.title.value;
-        const description = formEl.description.value;
+        .catch(error => {
+            console.log(error);
+            navigate('/');
+        })
+    }, [])
+
+    if (videos === null) {
+        return <h3>...</h3>
+    }
 
 
-        if (title === '' || description === '') {
-            alert("Please fill up all the fields")
-            return false;
-        } else {
-            navigate('/signUp')
+    // const handleSubmit = (event) => {
+    //     event.preventDefault();
+    //     const formEl = event.target;
+    //     const title = formEl.title.value;
+    //     const description = formEl.description.value;
+
+    //     if (title === '' || description === '') {
+    //         alert("Please fill up all the fields")
+    //         return false;
+    //     } else {
+    //         navigate('/signUp')
+    //     }
+    // }
+
+
+
+    const addNewVideo = (e) => {
+        e.preventDefault();
+        const newVideo = {
+            title : formRef.current.title.value,
+            description: formRef.current.description.value
         }
 
+        axios.post("http://localhost:8080/videos/", newVideo)
+            .then((res) => {
+                console.log("sucess");
+                setVideos(...videos, res.data)
+            })
+            .catch() 
+            formRef.current.reset()
+            navigate('/signUp')
     }
 
 
@@ -36,7 +76,7 @@ const Upload = () => {
                         alt="video thumbnail"/>
                 </div>
                 <form className="upload-form"
-                    onSubmit={handleSubmit}>
+                    onSubmit={addNewVideo} ref={formRef}>
                     <label className="upload-form__title-label" htmlFor='title'>TITLE YOUR VIDEO
                         <input className="upload-form__title-input" type='text' name='title' id='title' placeholder="Add a title to your video"/>
                     </label>

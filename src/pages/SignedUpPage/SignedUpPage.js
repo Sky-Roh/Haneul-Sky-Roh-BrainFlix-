@@ -1,5 +1,13 @@
 import "./SignedUpPage.scss";
+import {useNavigate} from 'react-router-dom'
+
 const SignedUp = () => {
+    const navigate = useNavigate();
+
+    setTimeout(() => {
+        navigate('/')
+    }, 2000);
+
     return (
         <div className="signUp">
             <h2 className="signUp__success">Success</h2>

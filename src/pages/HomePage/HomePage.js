@@ -7,7 +7,7 @@ import MainVideoDetail from "../../components/MainVideoDetail/MainVideoDetail"
 import CommentList from "../../components/CommentList/CommentList"
 import VideoList from "../../components/VideoList/VideoList"
 
-const Main = () => {
+const HomePage = () => {
 
     const {id} = useParams();
     const navigate = useNavigate();
@@ -21,12 +21,13 @@ const Main = () => {
             const videoData = res.data;
             setVideos(videoData);
             const videoId = id || videoData[0].id;
-            setVideoID(videoId)
+            setVideoID(videoId);
             return axios.get(`http://localhost:8080/videos/${videoId}`)
         })
         .then((res) => {
             const videoDetail = res.data;
             setcurrentVideo(videoDetail)
+            window.scroll(0, 0);
         })
         .catch(error => {
             console.log(error);
@@ -56,4 +57,4 @@ const Main = () => {
     );
 }
 
-export default Main;
+export default HomePage;

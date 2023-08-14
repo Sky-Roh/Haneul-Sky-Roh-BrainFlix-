@@ -3,7 +3,8 @@ import Upload from "../../components/Upload/Upload";
 
 const UploadPage = () => {
     return (
-        <Upload/>);
+        <Upload/>
+    );
 };
 
 export default UploadPage;

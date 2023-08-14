@@ -2,11 +2,9 @@ import "./MainVideoDetail.scss"
 import viewIcon from "../../assets/icons/views.svg"
 import likeIcon from "../../assets/icons/likes.svg"
 import convertDateFormat from "../../utils/utils.js"
-import {useState, useEffect} from "react";
-import {useNavigate} from 'react-router-dom'
-import axios from "axios";
 
-const MainVideoDetail = ({currentVideo, videoID}) => { // seperate it later
+
+const MainVideoDetail = ({currentVideo}) => { // seperate it later
 
 
     if (currentVideo === null) {

@@ -2,7 +2,7 @@ import CommentForm from "../CommentForm/CommentForm";
 import Comment from "../Comment/Comment"
 import "./CommentList.scss"
 
-const CommentList = ({currentVideo}) => { // seperate it later
+const CommentList = ({currentVideo}) => { 
 
     return (
         <>
