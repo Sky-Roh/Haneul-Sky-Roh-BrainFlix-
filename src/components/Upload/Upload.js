@@ -30,23 +30,6 @@ const Upload = () => {
         return <h3>...</h3>
     }
 
-
-    // const handleSubmit = (event) => {
-    //     event.preventDefault();
-    //     const formEl = event.target;
-    //     const title = formEl.title.value;
-    //     const description = formEl.description.value;
-
-    //     if (title === '' || description === '') {
-    //         alert("Please fill up all the fields")
-    //         return false;
-    //     } else {
-    //         navigate('/signUp')
-    //     }
-    // }
-
-
-
     const addNewVideo = (e) => {
         e.preventDefault();
         const newVideo = {
