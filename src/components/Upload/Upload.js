@@ -3,8 +3,9 @@ import {Link, useNavigate} from 'react-router-dom'
 import { useRef, useState, useEffect } from "react";
 import thumbnail from "../../assets/images/Upload-video-preview.jpg"
 import axios from "axios";
+const SERVER_URL = process.env.REACT_APP_PORT;
+const SERVER_ENDPOINT = process.env.REACT_APP_ENDPOINT;
 
-// reference : https://dev.to/deboragaleano/how-to-handle-multiple-inputs-in-react-55el#the-solution-refactoring
 const Upload = () => {
     const formRef = useRef();
 
@@ -13,7 +14,7 @@ const Upload = () => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:8080/videos")
+        .get(`${SERVER_URL}/${SERVER_ENDPOINT}`)
         .then((res) => {
             const videoData = res.data;
             setVideos(videoData);

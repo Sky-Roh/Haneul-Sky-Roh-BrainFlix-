@@ -6,7 +6,8 @@ import MainVideo from "../../components/MainVideo/MainVideo"
 import MainVideoDetail from "../../components/MainVideoDetail/MainVideoDetail"
 import CommentList from "../../components/CommentList/CommentList"
 import VideoList from "../../components/VideoList/VideoList"
-
+const SERVER_URL = process.env.REACT_APP_PORT;
+const SERVER_ENDPOINT = process.env.REACT_APP_ENDPOINT;
 const HomePage = () => {
 
     const {id} = useParams();
@@ -17,12 +18,12 @@ const HomePage = () => {
 
     useEffect(() => {
         axios
-        .get("http://localhost:8080/videos").then((res) => {
+        .get(`${SERVER_URL}/${SERVER_ENDPOINT}`).then((res) => {
             const videoData = res.data;
             setVideos(videoData);
             const videoId = id || videoData[0].id;
             setVideoID(videoId);
-            return axios.get(`http://localhost:8080/videos/${videoId}`)
+            return axios.get(`${SERVER_URL}/${SERVER_ENDPOINT}/${videoId}`)
         })
         .then((res) => {
             const videoDetail = res.data;
